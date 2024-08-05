@@ -42,9 +42,9 @@ cmd_tmp = """
 
 # model path
 if model == "starcoder":
-    model_path = "/mnt/efs/people/skgouda/repos/external/starcoder/starcoder_15b_bf16/"
+    model_path = "starcoder/starcoder_15b_bf16/"
 elif model == "llama":
-    model_path = "/mnt/efs/people/gsujan/Llama/hf_models/7B"
+    model_path = "Llama/hf_models/7B"
 elif model == "code_llama":
     # https://huggingface.co/codellama/CodeLlama-7b-hf
     model_path = "codellama/CodeLlama-7b-hf"

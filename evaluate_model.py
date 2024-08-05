@@ -26,11 +26,12 @@ from utils.utils import (
     valid_translation_source,
 )
 
+model_path = "./"
 
 def parse_args():
     parser=argparse.ArgumentParser(
-        usage="CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python3 -m torch.distributed.run --nproc_per_node 8 --master_port 20000 evaluate_model.py \
-            --model_name_or_path /mnt/efs/people/skgouda/repos/external/starcoder/starcoder_15b_bf16/ \
+        usage=f"CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python3 -m torch.distributed.run --nproc_per_node 8 --master_port 20000 evaluate_model.py \
+            --model_name_or_path {model_path}/starcoder/starcoder_15b_bf16/ \
             --do_sample --temperature 0.4 --model_context_length 8192 \
             --max_generation_length 256  --num_samples_per_example 5 --batch_size 1 \
             --task_name mxeval/mbxp --programming_lang python \
@@ -81,7 +82,7 @@ def parse_args():
                         help='Flag to use int8 weights')
     parser.add_argument('--override_previous_results', default=False, action='store_true',
                         help='override previous results')
-    parser.add_argument('--test_file', type=str, default='/mnt/efs/projects/datasets/humaneval/HumanEval.jsonl',
+    parser.add_argument('--test_file', type=str, default='datasets/humaneval/HumanEval.jsonl',
                         help='Test dataset')
     parser.add_argument('--programming_lang', type=str, default='python',
                         help='Programming Language')

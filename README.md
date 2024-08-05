@@ -12,11 +12,9 @@ Usage :
 
 For Falcon models we need pytorch 2.0 and transformers>=4.30
 
-(Tested in the docker:  "747303060528.dkr.ecr.us-east-1.amazonaws.com/mstar-vector:skgouda_public_model_eval_v2)
-
 ```python
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python3 -m torch.distributed.run --nproc_per_node 8 --master_port 20000 evaluate_model.py  \
---model_name_or_path /mnt/efs/people/skgouda/repos/external/starcoder/falcon_models/models/falcon_7b_instruct/ \
+--model_name_or_path $model_path/starcoder/falcon_models/models/falcon_7b_instruct/ \
 --do_sample \
 --temperature 0.4 \
 --model_context_length 8192 \
